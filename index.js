@@ -85,15 +85,29 @@ class Car {
    this.tank = newTank;
   }
   drive(distance){
-    if (this.tank === 0){
+    const gallonsUsed = distance / this.milesPerGallon;
+    if (this.tank - gallonsUsed<= 0){
+      const overage = (this.tank - gallonsUsed) * this.milesPerGallon *-1;
+      this.tank = 0;
+      this.odometer += distance - overage;
+
       return `I ran out of fuel at ${this.odometer} miles!`
     }
-    if (this.tank > 0 ){
+
     this.odometer = this.odometer + distance;
     const newTankCalc = Math.round(distance/this.milesPerGallon);
     this.tank = this.tank - newTankCalc;
-    {   
+
+    // if (this.tank === 0){
+    //   return `I ran out of fuel at ${this.odometer} miles!`
+    // }
+    // if (this.tank > 0 ){
+    // this.odometer = this.odometer + distance;
+    // const newTankCalc = Math.round(distance/this.milesPerGallon);
+    // this.tank = this.tank - newTankCalc;
+    // {   
   }
+}
   
 /*
   TASK 3

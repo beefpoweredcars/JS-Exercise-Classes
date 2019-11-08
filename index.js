@@ -84,9 +84,17 @@ class Car {
    const newTank = gallons + this.tank;
    this.tank = newTank;
   }
-
-}
-
+  drive(distance){
+    if (this.tank === 0){
+      return `I ran out of fuel at ${this.odometer} miles!`
+    }
+    if (this.tank > 0 ){
+    this.odometer = this.odometer + distance;
+    const newTankCalc = Math.round(distance/this.milesPerGallon);
+    this.tank = this.tank - newTankCalc;
+    {   
+  }
+  
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -222,3 +230,4 @@ if (typeof exports !== 'undefined') {
   if (Student) { module.exports.Student = Student }
   if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
 }
+    
